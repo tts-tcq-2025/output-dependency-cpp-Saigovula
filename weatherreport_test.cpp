@@ -6,7 +6,7 @@
 // Declaration from weather_stub.c
 struct WeatherSensor CreateStubSensor(double t, int p, int h, int w);
 
-void TestWeatherScenarios() {
+void testWeatherReport() {
     // Case 1: Stormy rainy day
     struct WeatherSensor stormy = CreateStubSensor(26.0, 70, 72, 52);
     const char* report1 = Report(&stormy);
@@ -21,7 +21,7 @@ void TestWeatherScenarios() {
 }
 
 int main() {
-    TestWeatherScenarios();
+    testWeatherReport();
     printf("All is well (maybe)\n");
     return 0;
 }
