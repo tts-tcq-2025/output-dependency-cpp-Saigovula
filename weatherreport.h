@@ -1,15 +1,14 @@
 #ifndef WEATHER_H
 #define WEATHER_H
 
-// Abstract interface for weather sensor in C
-typedef struct IWeatherSensor {
-    double (*TemperatureInC)(struct IWeatherSensor* self);
-    int (*Precipitation)(struct IWeatherSensor* self);
-    int (*Humidity)(struct IWeatherSensor* self);
-    int (*WindSpeedKMPH)(struct IWeatherSensor* self);
-} IWeatherSensor;
+struct WeatherSensor {
+    double (*TemperatureInC)(const void*);
+    int    (*Precipitation)(const void*);
+    int    (*Humidity)(const void*);
+    int    (*WindSpeedKMPH)(const void*);
+    const void *impl;  // Pointer to actual implementation
+};
 
-// Returns a weather report string based on sensor readings
-const char* Report(IWeatherSensor* sensor);
+const char* Report(const struct WeatherSensor *sensor);
 
 #endif
