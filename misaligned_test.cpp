@@ -3,7 +3,7 @@
 #include "misaligned.h"
 
 int main() {
-    // --- 1. Generate actual output with bug ---
+    
     struct ColorPair actualMap[MAJOR_COLORS * MINOR_COLORS];
     generateColorMap(actualMap);
 
