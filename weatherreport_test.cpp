@@ -8,10 +8,22 @@ typedef struct {
     IWeatherSensor base;
 } SensorStubNormal;
 
-double StubNormal_Temperature(IWeatherSensor* self) { return 26; }
-int StubNormal_Precipitation(IWeatherSensor* self) { return 70; }
-int StubNormal_Humidity(IWeatherSensor* self) { return 72; }
-int StubNormal_Wind(IWeatherSensor* self) { return 52; }
+double StubNormal_Temperature(IWeatherSensor* self) 
+{ 
+    return 26; 
+}
+int StubNormal_Precipitation(IWeatherSensor* self) 
+{ 
+    return 70; 
+}
+int StubNormal_Humidity(IWeatherSensor* self) 
+{ 
+    return 72; 
+
+int StubNormal_Wind(IWeatherSensor* self) 
+{ 
+    return 52; 
+}
 
 SensorStubNormal CreateSensorStubNormal() {
     SensorStubNormal stub;
@@ -27,10 +39,22 @@ typedef struct {
     IWeatherSensor base;
 } SensorStubBugExpose;
 
-double StubBug_Temperature(IWeatherSensor* self) { return 30; }
-int StubBug_Precipitation(IWeatherSensor* self) { return 80; }
-int StubBug_Humidity(IWeatherSensor* self) { return 65; }
-int StubBug_Wind(IWeatherSensor* self) { return 40; }
+double StubBug_Temperature(IWeatherSensor* self) 
+{ 
+    return 30; 
+}
+int StubBug_Precipitation(IWeatherSensor* self) 
+{ 
+    return 80; 
+}
+int StubBug_Humidity(IWeatherSensor* self) 
+{ 
+    return 65; 
+}
+int StubBug_Wind(IWeatherSensor* self) 
+{ 
+    return 40; 
+}
 
 SensorStubBugExpose CreateSensorStubBugExpose() {
     SensorStubBugExpose stub;
