@@ -2,7 +2,9 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
+    
 
+void testWeatherReport();
 // Declaration from weather_stub.c
 struct WeatherSensor CreateStubSensor(double t, int p, int h, int w);
 
