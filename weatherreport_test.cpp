@@ -7,6 +7,14 @@
 typedef struct {
     IWeatherSensor base;
 } SensorStubNormal;
+double StubNormal_Temperature(IWeatherSensor* self) ;
+int StubNormal_Precipitation(IWeatherSensor* self) ;
+int StubNormal_Humidity(IWeatherSensor* self) ;
+int StubNormal_Wind(IWeatherSensor* self) ;
+double StubBug_Temperature(IWeatherSensor* self) ;
+int StubBug_Precipitation(IWeatherSensor* self) ;
+int StubBug_Humidity(IWeatherSensor* self) ;
+int StubBug_Wind(IWeatherSensor* self) ;
 
 double StubNormal_Temperature(IWeatherSensor* self) 
 { 
