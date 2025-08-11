@@ -1,4 +1,4 @@
-#include "color_map.h"
+#include "misaligned.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -26,6 +26,7 @@ void generateOutputString(char *buffer, size_t bufSize, struct ColorPair colorMa
         strncat(buffer, line, bufSize - strlen(buffer) - 1);
     }
 }
+
 
 
 
