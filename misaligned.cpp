@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// BUG: using minorColor[i] instead of minorColor[j]
 void generateColorMap(struct ColorPair colorMap[]) {
     const char* majorColor[MAJOR_COLORS] = {"White", "Red", "Black", "Yellow", "Violet"};
     const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
@@ -12,7 +11,7 @@ void generateColorMap(struct ColorPair colorMap[]) {
         for (int j = 0; j < MINOR_COLORS; j++) {
             colorMap[count].index = count + 1;
             colorMap[count].major = majorColor[i];
-            colorMap[count].minor = minorColor[i]; // <-- BUG
+            colorMap[count].minor = minorColor[i];
             count++;
         }
     }
@@ -27,6 +26,7 @@ void generateOutputString(char *buffer, size_t bufSize, struct ColorPair colorMa
         strncat(buffer, line, bufSize - strlen(buffer) - 1);
     }
 }
+
 
 
 
