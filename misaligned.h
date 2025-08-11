@@ -12,9 +12,4 @@ struct ColorPair {
 
 int printColourMap();
 
-void generateColorMap(struct ColorPair colorMap[]);
-
-// Generate the color map output as a single string
-void generateOutputString(char *buffer, size_t bufSize, struct ColorPair colorMap[]);
-
 #endif
