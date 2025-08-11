@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "color_map.h"
+#include "misaligned.h"
 
 int main() {
     // --- 1. Generate actual output with bug ---
