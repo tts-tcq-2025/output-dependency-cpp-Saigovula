@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 
+void generateColorMap(struct ColorPair colorMap[]);
+
+// Generate the color map output as a single string
+void generateOutputString(char *buffer, size_t bufSize, struct ColorPair colorMap[]);
+
 void generateColorMap(struct ColorPair colorMap[]) {
     const char* majorColor[MAJOR_COLORS] = {"White", "Red", "Black", "Yellow", "Violet"};
     const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
@@ -26,6 +31,7 @@ void generateOutputString(char *buffer, size_t bufSize, struct ColorPair colorMa
         strncat(buffer, line, bufSize - strlen(buffer) - 1);
     }
 }
+
 
 
 
