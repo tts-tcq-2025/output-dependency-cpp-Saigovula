@@ -2,28 +2,32 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
-    
 
-void testWeatherReport();
-// Declaration from weather_stub.c
-struct WeatherSensor CreateStubSensor(double t, int p, int h, int w);
+/* ---- Test Stub Sensor Implementations ---- */
+static double temp_high(void) { return 26.0; }
+static double temp_low(void)  { return 20.0; }
 
-void testWeatherReport() {
-    // Case 1: Stormy rainy day
-    struct WeatherSensor stormy = CreateStubSensor(26.0, 70, 72, 52);
-    const char* report1 = Report(&stormy);
-    printf("Report1: %s\n", report1);
-    assert(strstr(report1, "rain") != NULL);
+static int precip_high(void)  { return 70; }  // should trigger "rain"
+static int precip_low(void)   { return 30; }
 
-    // Case 2: High precipitation, low wind (bug check)
-    struct WeatherSensor highPrecip = CreateStubSensor(26.0, 70, 72, 40);
-    const char* report2 = Report(&highPrecip);
-    printf("Report2: %s\n", report2);
-    assert(strlen(report2) > 0);
-}
+static int humidity_mid(void) { return 72; }
 
-int main() {
-    testWeatherReport();
-    printf("All is well (maybe)\n");
-    return 0;
+static int wind_high(void)    { return 52; }
+static int wind_low(void)     { return 20; }
+
+/* Combined test function */
+void testWeatherReport(void)
+{
+    struct WeatherSensor rainy_stub = { temp_high, precip_high, humidity_mid, wind_low };
+    struct WeatherSensor cloudy_stub = { temp_high, precip_low, humidity_mid, wind_low };
+
+    const char* report_rainy = Report(&rainy_stub);
+    const char* report_cloudy = Report(&cloudy_stub);
+
+    printf("Rainy case: %s\n", report_rainy);
+    printf("Cloudy case: %s\n", report_cloudy);
+
+    /* This will fail because of the bug — no “rain” in output */
+    assert(strstr(report_rainy, "rain") != NULL);
+    assert(strlen(report_cloudy) > 0);
 }
