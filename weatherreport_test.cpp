@@ -31,3 +31,8 @@ void testWeatherReport(void)
     assert(strstr(report_rainy, "rain") != NULL);
     assert(strlen(report_cloudy) > 0);
 }
+
+int main(void) {
+    testWeatherReport();
+    return 0;
+}
