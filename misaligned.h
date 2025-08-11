@@ -10,6 +10,8 @@ struct ColorPair {
     const char* minor;
 };
 
+int printColourMap();
+
 void generateColorMap(struct ColorPair colorMap[]);
 
 // Generate the color map output as a single string
