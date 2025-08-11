@@ -1,14 +1,13 @@
-#ifndef WEATHER_H
-#define WEATHER_H
+#ifndef WEATHERREPORT_H
+#define WEATHERREPORT_H
 
 struct WeatherSensor {
-    double (*TemperatureInC)(const void*);
-    int    (*Precipitation)(const void*);
-    int    (*Humidity)(const void*);
-    int    (*WindSpeedKMPH)(const void*);
-    const void *impl;  // Pointer to actual implementation
+    double (*TemperatureInC)(void);
+    int    (*Precipitation)(void);
+    int    (*Humidity)(void);
+    int    (*WindSpeedKMPH)(void);
 };
 
-const char* Report(const struct WeatherSensor *sensor);
+const char* Report(const struct WeatherSensor* sensor);
 
 #endif
