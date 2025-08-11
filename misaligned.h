@@ -1,15 +1,9 @@
 #ifndef COLOR_MAP_H
 #define COLOR_MAP_H
 
-#define MAJOR_COLORS 5
-#define MINOR_COLORS 5
-
-struct ColorPair {
-    int index;
-    const char* major;
-    const char* minor;
-};
-
-int printColourMap();
+// Prints the color map using the provided output function.
+// Returns the total number of color pairs.
+int printColorMap(void (*outputFunc)(const char*));
 
 #endif
+
