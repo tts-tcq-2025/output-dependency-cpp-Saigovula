@@ -1,48 +1,34 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <assert.h>
-#include <misaligned.h>
+#include "color_map.h"
+#include <stdio.h>
+#include <string.h>
 
-struct ColorPair {
-    int index;
-    std::string major;
-    std::string minor;
-};
+// BUG: using minorColor[i] instead of minorColor[j]
+void generateColorMap(struct ColorPair colorMap[]) {
+    const char* majorColor[MAJOR_COLORS] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
-std::vector<ColorPair> generateColorMap();
-std::string formatColorMapLine(const ColorPair& entry);
-
-std::vector<ColorPair> generateColorMap() {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    std::vector<ColorPair> colorMap;
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            colorMap.push_back({i * 5 + j, majorColor[i], minorColor[i]});
+    int count = 0;
+    for (int i = 0; i < MAJOR_COLORS; i++) {
+        for (int j = 0; j < MINOR_COLORS; j++) {
+            colorMap[count].index = count + 1;
+            colorMap[count].major = majorColor[i];
+            colorMap[count].minor = minorColor[i]; // <-- BUG
+            count++;
         }
     }
-    return colorMap;
 }
 
-std::string formatColorMapLine(const ColorPair& entry) {
-    std::ostringstream oss;
-    oss << entry.index << " | " << entry.major << " | " << entry.minor;
-    return oss.str();
-}
-void printOnConsole(std::string& lineContent){
-  std::cout<<lineContent;
-}
-int printColorMap(std::function<void(std::string&) printFn)
-{
-    auto colorMap = generateColorMap();  
-    for (ColorPair &entry : colorMap) 
-    {
-        printFn(formatColorMapLine(entry) << "\n");
+void generateOutputString(char *buffer, size_t bufSize, struct ColorPair colorMap[]) {
+    buffer[0] = '\0'; // clear buffer
+    char line[50];
+    for (int i = 0; i < MAJOR_COLORS * MINOR_COLORS; i++) {
+        snprintf(line, sizeof(line), "%d | %s | %s\n",
+                 colorMap[i].index, colorMap[i].major, colorMap[i].minor);
+        strncat(buffer, line, bufSize - strlen(buffer) - 1);
     }
-    return colorMap.size();
 }
+
+
 
 
 
